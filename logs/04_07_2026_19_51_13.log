@@ -1,0 +1,4 @@
+[INFO] 21 root - Entered the data ingestion method
+[INFO] 26 root - reading the dataset as df
+[INFO] 30 root -  doing train test
+[INFO] 35 root - data saved

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wine Quality Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0;
+            padding: 0;
+        }
+ 
+        .container {
+            max-width: 550px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+ 
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+ 
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+ 
+        .full-width {
+            grid-column: span 2;
+        }
+ 
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+ 
+        label {
+            font-size: 13px;
+            margin-bottom: 4px;
+            color: #555;
+            font-weight: 600;
+        }
+ 
+        input {
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+ 
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102,126,234,0.5);
+        }
+ 
+        /* FIX: Buttons sit side by side (span 1 each) */
+        .btn-group {
+            grid-column: span 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+ 
+        button {
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+ 
+        .btn-predict {
+            background: #667eea;
+            color: white;
+        }
+ 
+        .btn-predict:hover {
+            background: #5a67d8;
+        }
+ 
+        .btn-reset {
+            background: #e2e8f0;
+            color: #333;
+        }
+ 
+        .btn-reset:hover {
+            background: #cbd5e0;
+        }
+ 
+        .result {
+            margin-top: 20px;
+            padding: 12px;
+            background: #e6fffa;
+            border: 1px solid #38b2ac;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+            color: #065f46;
+        }
+ 
+        @media (max-width: 600px) {
+            form {
+                grid-template-columns: 1fr;
+            }
+ 
+            .full-width {
+                grid-column: span 1;
+            }
+ 
+            .btn-group {
+                grid-column: span 1;
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+ 
+<body>
+ 
+<div class="container">
+    <h2>🍷 Wine Quality Prediction</h2>
+ 
+    <form action="{{ url_for('predict_data_point') }}" method="POST">
+ 
+        <div class="input-group">
+            <label>Fixed Acidity</label>
+            <input type="number" step="any" name="fixed_acidity" required>
+        </div>
+ 
+        <div class="input-group">
+            <label>Volatile Acidity</label>
+            <input type="number" step="any" name="volatile_acidity" required>
+        </div>
+ 
+        <div class="input-group">
+            <label>Citric Acid</label>
+            <input type="number" step="any" name="citric_acid" required>
+        </div>
+ 
+        <div class="input-group">
+            <label>Residual Sugar</label>
+            <input type="number" step="any" name="residual_sugar" required>
+        </div>
+ 
+        <div class="input-group">
+            <label>Chlorides</label>
+            <input type="number" step="any" name="chlorides" required>
+        </div>
+ 
+        <div class="input-group">
+            <label>Free Sulfur Dioxide</label>
+            <input type="number" step="any" name="free_sulfur_dioxide" required>
+        </div>
+ 
+        <div class="input-group">
+            <label>Total Sulfur Dioxide</label>
+            <input type="number" step="any" name="total_sulfur_dioxide" required>
+        </div>
+ 
+        <div class="input-group">
+            <label>Density</label>
+            <input type="number" step="any" name="density" required>
+        </div>
+ 
+        <div class="input-group">
+            <label>pH</label>
+            <input type="number" step="any" name="pH" required>
+        </div>
+ 
+        <div class="input-group">
+            <label>Sulphates</label>
+            <input type="number" step="any" name="sulphates" required>
+        </div>
+ 
+        <div class="input-group">
+            <label>Alcohol</label>
+            <input type="number" step="any" name="alcohol" required>
+        </div>
+ 
+        <div class="input-group full-width">
+            <label>Quality</label>
+            <input type="number" step="any" name="quality" required>
+        </div>
+ 
+        <!-- FIX: Wrapped in btn-group so both buttons sit side by side -->
+        <div class="btn-group">
+            <button type="submit" class="btn-predict">Predict</button>
+            <button type="reset" class="btn-reset">Reset</button>
+        </div>
+ 
+    </form>
+ 
+    {% if results %}
+        <p style="text-align:center; font-size:18px; margin-top:15px;">
+            🍷 Prediction: <strong>{{ results }}</strong>
+        </p>
+    {% endif %}
+</div>
+ 
+</body>
+</html>
+ 

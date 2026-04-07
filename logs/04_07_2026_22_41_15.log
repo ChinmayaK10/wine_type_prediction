@@ -1,0 +1,5 @@
+[WARNING] 97 werkzeug -  * Debugger is active!
+[INFO] 97 werkzeug -  * Debugger PIN: 458-573-927
+[INFO] 63 root - sending data back as dataframe
+[INFO] 17 root - Loading the model
+[INFO] 97 werkzeug - 127.0.0.1 - - [07/Apr/2026 22:41:41] "POST /predictdata HTTP/1.1" 200 -

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wine Prediction</title>
+ 
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #5f2c82, #49a09d);
+            color: white;
+        }
+ 
+        .container {
+            text-align: center;
+        }
+ 
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+ 
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+ 
+        a {
+            text-decoration: none;
+        }
+ 
+        .btn {
+            padding: 14px 28px;
+            background: white;
+            color: #5f2c82;
+            font-size: 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+        }
+ 
+        .btn:hover {
+            background: #f0f0f0;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+ 
+<body>
+ 
+<div class="container">
+    <h1>🍷 Welcome to Wine Prediction</h1>
+    <p>Predict wine type using machine learning</p>
+ 
+    <!-- FIX: Removed extra </a> closing tag -->
+    <a href="{{ url_for('predict_data_point') }}" class="btn">
+        Start Prediction
+    </a>
+</div>
+ 
+</body>
+</html>
