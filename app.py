@@ -5,11 +5,11 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def home():
-    return {"message": "Wine Prediction API is running"}
+     return render_template('home_page.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    try:
+    if request.method=='POST':
         data = request.get_json()
 
         input_data = CustomData(
@@ -34,14 +34,8 @@ def predict():
 
         result = "white wine" if prediction[0] == 0 else "red wine"
 
-        return jsonify({
-            "prediction": result
-        })
-
-    except Exception as e:
-        return jsonify({
-            "error": str(e)
-        }), 400
+        return render_template('form.html',results=result)
+    return render_template('form.html')
 
 
 if __name__ == '__main__':
